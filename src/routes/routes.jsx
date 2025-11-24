@@ -9,7 +9,7 @@ export const allRoutes = [
         element: <AppLayout />,
         children: [
             {
-                index: true,
+                path: '/board',
                 element: <Board />
             }
         ]
