@@ -41,14 +41,6 @@ export const tasksHardcoded = [
         },
         {
             id: crypto.randomUUID(),
-            title: "Refactor login logic",
-            description: "The authorization and authentication must follow the JWT flow with good practices in respective controller.",
-            assignee: "userMuss", 
-            status: "qa",
-            createdAt: "2025-11-20"
-        },
-        {
-            id: crypto.randomUUID(),
             title: "Integrate payment gateway.",
             description: "Integrate a secure payment gateway to process online transactions.",
             assignee: "userMuss", 

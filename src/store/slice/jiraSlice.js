@@ -1,20 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { tasksHardcoded } from "./defaultData/tasksDefault";
+import { usersDefault } from "./defaultData/usersDefault";
+
+const dataInLocalStorage = localStorage.getItem("jiraData");
 
 const initialState = {
-    users: [
-        { id: crypto.randomUUID(), name: "userRose", password: "123", role: "Developer" },
-        { id: crypto.randomUUID(), name: "userTram", password: "123", role: "Developer" },
-        { id: crypto.randomUUID(), name: "userPhd", password: "123", role: "QA" },
-        { id: crypto.randomUUID(), name: "userMuss", password: "123", role: "QA" },
-    ],
+    users: usersDefault,
     tasks: tasksHardcoded,
     selectedTask: null,
 }
 
 const jiraSlice = createSlice({
     name: 'jira',
-    initialState,
+    initialState: dataInLocalStorage? JSON.parse(dataInLocalStorage): initialState,
     reducers: {
         createTask: (state, action) => {
             const { titleA, statusA } = action.payload;
