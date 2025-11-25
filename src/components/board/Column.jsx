@@ -1,10 +1,10 @@
-import { Box, Button, selectClasses, Typography } from '@mui/material'
+import { Box, Button, Typography } from '@mui/material'
 import { TaskCard } from './TaskCard'
 import { useState } from 'react'
 import { TaskForm } from './TaskForm'
 import { useDroppable } from '@dnd-kit/core'
 import { useDispatch } from 'react-redux'
-import { selectTask, updateStatus } from '../../store/slice/jiraSlice'
+import { selectTask } from '../../store/slice/jiraSlice'
 
 export const Column = ({ name, taskCards, status }) => {
     const { setNodeRef } = useDroppable({ id: status });

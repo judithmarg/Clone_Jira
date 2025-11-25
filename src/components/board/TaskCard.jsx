@@ -24,7 +24,7 @@ export const TaskCard = ({ id, task, handleSelectedCard }) => {
                     <Typography variant="button" >{task.type}</Typography>
                     <SelectAvatar nameAvatar={task.assignee} read/> 
                 </Box>
-                <Button sx={{color:"neutral.secondary"}}onClick={handleOnClick}>Details</Button>
+                {/* <Button sx={{color:"neutral.secondary"}}onClick={handleOnClick}>Details</Button> */}
             </Box>
             
         </div>

@@ -8,14 +8,15 @@ import { useDispatch } from 'react-redux';
 import { selectTask, updateStatus } from '../../store/slice/jiraSlice';
 
 const spaceColumns = [
-    { name: 'Backlog', reference: 'backlog' },
-    { name: 'In progress', reference: 'in-progress' },
-    { name: 'QA', reference: 'qa' },
-    { name: 'Done', reference: 'done' }
+    { name: 'Backlog', reference: 'backlog', next: 'in-progress', role:'Developer' },
+    { name: 'In progress', reference: 'in-progress', next: 'qa', role:'Developer' },
+    { name: 'QA', reference: 'qa', next: 'done', role:'QA' },
+    { name: 'Done', reference: 'done', next: 'none', role:'NONE' }
 ];
 
 export const Board = () => {
     const tasks = useSelector(state => state.jira.tasks);
+    const currentUser = useSelector(state => state.jira.currentUser);
     const dispatch = useDispatch();
 
     const [data, setData] = useState(tasks);
@@ -24,11 +25,18 @@ export const Board = () => {
         const { active, over } = event;
         console.log(event)
         if (!over) return;
-        
-        const taskCurrent = data.filter(t => t.id === active.id)
-        dispatch(selectTask(taskCurrent[0]))
-        dispatch(updateStatus(over.id))
-        setData(tasks)
+
+        const taskCurrent = data.find(t => t.id === active.id)
+        dispatch(selectTask(taskCurrent))
+        const allowedStatus = spaceColumns.
+                                find(s => s.next === over.id && taskCurrent.status === s.reference && currentUser.role === s.role)
+        if (allowedStatus) {
+            dispatch(updateStatus(over.id))
+            setData(tasks)
+        } else{
+            alert("You can't move backwards")
+        }
+
     }
 
     return (

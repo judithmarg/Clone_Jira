@@ -6,6 +6,7 @@ const dataInLocalStorage = localStorage.getItem("jiraData");
 
 const initialState = {
     users: usersDefault,
+    curretUser: null,
     tasks: tasksHardcoded,
     selectedTask: null,
 }
@@ -26,12 +27,16 @@ const jiraSlice = createSlice({
         editDetails: (state, action) => {
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, description: action.payload } : t)
         },
-        assignPerson: (state, action) => {
-            state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, asignee: action.payload } : t)
-        },
         updateStatus: (state, action) => {
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, status: action.payload } : t)
         },
+        loginUser: (state, action) => {
+            state.curretUser = action.payload
+            state.users.push(action.payload)
+        },
+        logoutUser: (state) => {
+            state.curretUser = null
+        }
 
     }
 })
