@@ -12,7 +12,7 @@ export const Column = ({ name, taskCards, status }) => {
 
     const [showNewIssue, setShowNewIssue] = useState(false);
     const handleCreateCard = () => {
-        setShowNewIssue(true);
+        setShowNewIssue(!showNewIssue);
     }
 
     return (
@@ -24,9 +24,9 @@ export const Column = ({ name, taskCards, status }) => {
                 {taskCards.map(task => (
                     <TaskCard key={task.id} id={task.id} task={task} handleSelectedCard={(t)=> dispatch(selectTask(t))}/>
                 ))}
-                <Box sx={{ alignSelf: 'flex-start', color: 'neutral.main' }}>
+                <Box sx={{ color: 'neutral.main', mb:'8px', alignSelf:'center' }}>
                     {showNewIssue ? (
-                        <TaskForm nameColumn={status} />
+                        <TaskForm nameColumn={status} showIssue={handleCreateCard}/>
                     ) : (
                         <Button variant='outlined' sx={{ color: 'neutral.main' }} onClick={handleCreateCard}>+ Create issue</Button>
                     )}

@@ -24,9 +24,7 @@ export const Board = () => {
         const { active, over } = event;
         console.log(event)
         if (!over) return;
-        // setData(prev => prev.map(task => 
-        //     task.id === active.id ? {...task, status: over.id }; dispatch(updateStatus(over.id)) : task
-        // ));
+        
         const taskCurrent = data.filter(t => t.id === active.id)
         dispatch(selectTask(taskCurrent[0]))
         dispatch(updateStatus(over.id))

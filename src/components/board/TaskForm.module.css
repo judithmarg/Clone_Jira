@@ -1,0 +1,5 @@
+.inputForm, .inputForm:active, .inputForm:focus {
+    background-color: transparent;
+    border: none;
+    outline: none;
+}

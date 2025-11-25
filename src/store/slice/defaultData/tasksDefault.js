@@ -5,6 +5,7 @@ export const tasksHardcoded = [
             description: "The authorization and authentication must follow the JWT flow with good practices in respective controller.",
             assignee: "userRose", 
             status: "backlog",
+            type: "🐛-FIX",
             createdAt: "2025-11-21"
         },
         {
@@ -13,6 +14,7 @@ export const tasksHardcoded = [
             description: "Develop a robust notification system that includes push notifications, email, and in-app notifications.",
             assignee: "userMuss", 
             status: "done",
+            type: "✅-TASK",
             createdAt: "2025-11-24"
         },
         {
@@ -21,6 +23,7 @@ export const tasksHardcoded = [
             description: "Improve database performance by optimizing queries, indexing, and cache management.",
             assignee: "userTram", 
             status: "in-progress",
+            type: "🐛-FIX",
             createdAt: "2025-11-24"
         },
         {
@@ -29,6 +32,7 @@ export const tasksHardcoded = [
             description: "Design and build a RESTful API that allows for the creation, reading, updating, and deletion of user profiles. ",
             assignee: "userRose", 
             status: "backlog",
+            type: "✅-TASK",
             createdAt: "2025-11-22"
         },
         {
@@ -37,6 +41,7 @@ export const tasksHardcoded = [
             description: "Develop an efficient search system that allows users to find relevant information within the application. ",
             assignee: "userPhd", 
             status:  "qa" ,
+            type: "🐛-FIX",
             createdAt: "2025-11-15"
         },
         {
@@ -45,6 +50,7 @@ export const tasksHardcoded = [
             description: "Integrate a secure payment gateway to process online transactions.",
             assignee: "userMuss", 
             status: "done",
+            type: "✴️-US",
             createdAt: "2025-11-02"
         },
         {
@@ -52,7 +58,8 @@ export const tasksHardcoded = [
             title: "Create reporting system. ",
             description: "Develop a system that generates customized reports based on key application data. ",
             assignee: "userTram", 
-            status: "in-progress" ,
+            status: "in-progress",
+            type: "✴️-US",
             createdAt: "2025-11-20"
         },
         {
@@ -61,6 +68,7 @@ export const tasksHardcoded = [
             description: "Add two-factor authentication to increase the security of user accounts.",
             assignee: "userPhd", 
             status: "qa",
+            type: "✅-TASK",
             createdAt: "2025-11-10"
         },
         {
@@ -69,6 +77,7 @@ export const tasksHardcoded = [
             description: "Identify and resolve bottlenecks in mobile application performance, improving speed and efficiency. ",
             assignee: "userTram", 
             status: "backlog",
+            type: "✴️-US",
             createdAt: "2025-11-05"
         }
     ]

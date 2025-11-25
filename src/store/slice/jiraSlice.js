@@ -15,25 +15,21 @@ const jiraSlice = createSlice({
     initialState: dataInLocalStorage? JSON.parse(dataInLocalStorage): initialState,
     reducers: {
         createTask: (state, action) => {
-            const { titleA, statusA } = action.payload;
+            const { titleA, statusA, assigneA } = action.payload;
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
-            state.tasks.push({ id: crypto.randomUUID(), title: titleA, description: '', assignee: '', status: statusA, createdAt: dateString })
+            state.tasks.push({ id: crypto.randomUUID(), title: titleA, description: '', assignee: assigneA, type:'✅-TASK', status: statusA, createdAt: dateString })
         },
         selectTask: (state, action) => {
-            console.log("mirenme", action.payload)
             state.selectedTask = action.payload
         },
         editDetails: (state, action) => {
-            // state.selectedTask = {...state.selectedTask, description: action.payload}
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, description: action.payload } : t)
         },
         assignPerson: (state, action) => {
-            // state.selectedTask = {...state.selectedTask, asignee: action.payload}
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, asignee: action.payload } : t)
         },
         updateStatus: (state, action) => {
-            // state.selectedTask =  {...state.selectedTask, status: action.payload}
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, status: action.payload } : t)
         },
 

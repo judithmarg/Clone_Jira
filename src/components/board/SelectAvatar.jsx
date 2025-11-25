@@ -1,0 +1,56 @@
+import { Avatar, FormControl, ListItemText, MenuItem, Select } from '@mui/material'
+import { useState } from 'react';
+import { useSelector } from 'react-redux'
+
+export const SelectAvatar = ({ nameAvatar, updateAssign, read = false }) => {
+    const users = useSelector((state) => state.jira.users);
+    const user = users.find(u => u.name === nameAvatar);
+    const [asigneeUser, setAsigneeUser] = useState(user);
+
+    if (read) {
+        return (
+            <Avatar sx={{ width: 24, height: 24 }} src={asigneeUser?.avatar} />
+        )
+    }
+
+    const handleOnChange = (e) => {
+        const newAvatar = e.target.value;
+        setAsigneeUser(newAvatar)
+        updateAssign(newAvatar)
+    }
+
+    return (
+        <>
+            <FormControl sx={{ m: 1, width: '100%' }}>
+                <Select
+                    value={asigneeUser}
+                    onChange={(e) => handleOnChange(e)}
+                    displayEmpty
+                    inputProps={{ 'aria-label': 'Without label' }}
+                    sx={{
+                        ".MuiOutlinedInput-input": {
+                            display: "flex",
+                            gap: "12px",
+                            alignItems: "center",
+                            padding: "2px 12px",
+                            fontSize: "14px"
+                        },
+                        ".MuiOutlinedInput-notchedOutline": {
+                            border: "2px solid pink",
+                        },
+                        ".MuiListItemText-root .MuiListItemText-primary": {
+                            fontSize: "14px"
+                        }
+                    }}
+                >
+                    {users.map((user) => (
+                        <MenuItem key={user.id} value={user} sx={{ display: "flex", gap: "16px" }}>
+                            <Avatar sx={{ width: 24, height: 24 }} src={user.avatar} />
+                            <ListItemText sx={{ fontSize: "14px" }} primary={user.name} />
+                        </MenuItem>
+                    ))}
+                </Select>
+            </FormControl>
+        </>
+    )
+}
