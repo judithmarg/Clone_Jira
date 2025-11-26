@@ -7,14 +7,18 @@ const themeMode = {
     magent: "#FDD0EC",
     purple: "#F8EEFE",
     neutral: "#1F1F21",
-    neutral2: "#6c0559ff"
+    neutral2: "#6c0559ff",
+    contrast: "#FFFFFF",
+    magentDark: "#50253F"
   },
   "dark": {
-    background: "#676565ff",
+    background: "#434343ff",
     magent: "#77325B",
     purple: "#35243F",
     neutral: "#F8F8F8",
-    neutral2: "#f4bde0ff"
+    neutral2: "#f4bde0ff",
+    contrast: "#1E1F21",
+    magentDark: "#50253F"
   }
 }
 
@@ -33,7 +37,9 @@ export const getTheme = (mode) => {
       },
       neutral: {
         main: themeMode[mode].neutral,
-        secondary: themeMode[mode].neutral2
+        secondary: themeMode[mode].neutral2,
+        contrast: themeMode[mode].contrast,
+        tertiary: themeMode[mode].magentDark
       }
     },
     typography: {

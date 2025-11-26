@@ -1,4 +1,4 @@
-import { Avatar, FormControl, ListItemText, MenuItem, Select } from '@mui/material'
+import { Avatar, FormControl, ListItemText, MenuItem, Select, Tooltip } from '@mui/material'
 import { useState } from 'react';
 import { useSelector } from 'react-redux'
 
@@ -9,7 +9,9 @@ export const SelectAvatar = ({ nameAvatar, updateAssign, read = false }) => {
 
     if (read) {
         return (
+            <Tooltip title={asigneeUser?.name}>
             <Avatar sx={{ width: 24, height: 24 }} src={asigneeUser?.avatar} />
+            </Tooltip>
         )
     }
 

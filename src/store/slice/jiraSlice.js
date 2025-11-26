@@ -6,7 +6,7 @@ const dataInLocalStorage = localStorage.getItem("jiraData");
 
 const initialState = {
     users: usersDefault,
-    curretUser: null,
+    currentUser: null,
     tasks: tasksHardcoded,
     selectedTask: null,
 }
@@ -30,16 +30,19 @@ const jiraSlice = createSlice({
         updateStatus: (state, action) => {
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, status: action.payload } : t)
         },
+        registerUser: (state, action) => {
+            state.users.push({...action.payload, id:crypto.randomUUID(), avatar: 'src/assets/five.jpg'})
+        },
         loginUser: (state, action) => {
-            state.curretUser = action.payload
-            state.users.push(action.payload)
+            const {username, password} = action.payload
+            state.currentUser = state.users.find(user => user.name === username && user.password === password)
         },
         logoutUser: (state) => {
-            state.curretUser = null
+            state.currentUser = null
         }
 
     }
 })
 
-export const { createTask, editDetails, assignPerson, updateStatus, selectTask } = jiraSlice.actions
+export const { createTask, editDetails, assignPerson, updateStatus, selectTask, registerUser, loginUser, logoutUser} = jiraSlice.actions
 export default jiraSlice.reducer

@@ -1,0 +1,23 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.buttonGroup {
+    background-color: white;
+}
+
+.buttonToggle:active {
+    background-color: palevioletred;
+    color: white;
+}

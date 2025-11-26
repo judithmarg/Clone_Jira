@@ -34,7 +34,7 @@ export const Board = () => {
             dispatch(updateStatus(over.id))
             setData(tasks)
         } else{
-            alert("You can't move backwards")
+            alert("You can't move in this way")
         }
 
     }
