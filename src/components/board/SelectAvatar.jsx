@@ -17,8 +17,8 @@ export const SelectAvatar = ({ nameAvatar, updateAssign, read = false }) => {
 
     const handleOnChange = (e) => {
         const newAvatar = e.target.value;
-        setAsigneeUser(newAvatar)
         updateAssign(newAvatar)
+        setAsigneeUser(newAvatar)
     }
 
     return (

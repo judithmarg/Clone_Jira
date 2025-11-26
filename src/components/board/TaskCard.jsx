@@ -11,11 +11,6 @@ export const TaskCard = ({ id, task, handleSelectedCard }) => {
             : undefined
     }
 
-    const handleOnClick = () => {
-        console.log("llegue")
-        // handleSelectedCard(task)
-    }
-
     return (
         <div ref={setNodeRef} style={style} {...attributes} {...listeners} className='card' >
             <Box sx={{ display: 'flex', flexDirection: 'column', p: '12px', gap: '12px', backgroundColor: 'secondary.main', borderRadius: '8px', width: '258px', boxSizing: 'border-box' }}>

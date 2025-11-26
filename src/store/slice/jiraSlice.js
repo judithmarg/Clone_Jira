@@ -31,7 +31,8 @@ const jiraSlice = createSlice({
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, status: action.payload } : t)
         },
         registerUser: (state, action) => {
-            state.users.push({...action.payload, id:crypto.randomUUID(), avatar: 'src/assets/five.jpg'})
+             const {username, password, role} = action.payload
+            state.users.push({id:crypto.randomUUID(), name:username, password:password, role: role, avatar: 'src/assets/five.jpg'})
         },
         loginUser: (state, action) => {
             const {username, password} = action.payload

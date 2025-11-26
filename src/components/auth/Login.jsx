@@ -7,20 +7,20 @@ import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../store/slice/jiraSlice';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 
 const inputForm = {
     username: "",
-    password: "",
-    role: ""
+    password: ""
 }
 export const Login = () => {
     const [form, setForm] = useState(inputForm);
     const { username, password } = form;
+    const users = useSelector(state => state.jira.users);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const handleOnChange = ({ target }) => {
-        console.log("mi target", target)
         const { name, value } = target;
         setForm(prev => ({
             ...prev,
@@ -30,6 +30,8 @@ export const Login = () => {
 
     const handleSubmit = () => {
         if (username === null && password === null) return;
+        const correctUser = users.some(u=> u.name === username && u.password === password)
+        if(!correctUser) return;
         dispatch(loginUser(form))
         navigate("/board")
     }

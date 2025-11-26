@@ -23,7 +23,6 @@ export const Board = () => {
 
     const handleChangeColumn = (event) => {
         const { active, over } = event;
-        console.log(event)
         if (!over) return;
 
         const taskCurrent = data.find(t => t.id === active.id)

@@ -28,7 +28,7 @@ export const Register = () => {
     }
 
     const handleSubmit = () => {
-        if(username === null && password === null ) return;
+        if(username === null && password === null && role==="") return;
         dispatch(registerUser(form))
         navigate('/login')
     }

@@ -13,7 +13,6 @@ export const TaskForm = ({ nameColumn, showIssue }) => {
 
   const submitInfo = () => {
     if(inputRef.current.value === null) return;
-    console.log('raro que fale',  assigneFinal)
     const newTask = { titleA: inputRef.current.value, statusA: nameColumn, assigneA: assigneFinal?.name || "userRose"};
     dispatch(createTask(newTask))
     showIssue()
@@ -23,7 +22,7 @@ export const TaskForm = ({ nameColumn, showIssue }) => {
     <Box sx={{ display: 'flex', flexDirection: 'column', p: '12px', gap: '12px', backgroundColor: 'secondary.main', borderRadius: '8px', width: '258px', boxSizing: 'border-box' }}>
       <input ref={inputRef} type="text" placeholder="Write the new task" className={styles.inputForm} /> 
       <Box sx={{display:'flex'}}>
-        <SelectAvatar nameAvatar="userRose" updateAssign={()=>setAssigneFinal()} />
+        <SelectAvatar nameAvatar="userRose" updateAssign={setAssigneFinal} />
         <Button onClick={submitInfo} sx={{backgroundColor: "primary.main", color: "neutral.main"}}>ADD</Button>
       </Box>
     </Box>
