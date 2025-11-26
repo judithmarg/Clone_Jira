@@ -19,7 +19,7 @@ export const Column = ({ name, taskCards, status }) => {
         <div ref={setNodeRef} className="space-box">
             <Box sx={{ width: '270px', boxSizing: 'border-box', display: 'flex', flexDirection: 'column', gap: '6px', backgroundColor: 'primary.main', borderRadius: '8px', alignItems: 'center' }}>
                 <Box sx={{ p: '16px', alignSelf: 'flex-start' }}>
-                    <Typography sx={{ fontWeight: '600', textTransform: 'uppercase' }}>{name}</Typography>
+                    <Typography sx={{ fontWeight: '600', textTransform: 'uppercase',color:'neutral.main'}}>{name}</Typography>
                 </Box>
                 {taskCards.map(task => (
                     <TaskCard key={task.id} id={task.id} task={task} handleSelectedCard={(t)=> dispatch(selectTask(t))}/>

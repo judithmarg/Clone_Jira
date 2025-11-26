@@ -19,19 +19,16 @@ export const Board = () => {
     const currentUser = useSelector(state => state.jira.currentUser);
     const dispatch = useDispatch();
 
-    const [data, setData] = useState(tasks);
-
     const handleChangeColumn = (event) => {
         const { active, over } = event;
         if (!over) return;
 
-        const taskCurrent = data.find(t => t.id === active.id)
+        const taskCurrent = tasks.find(t => t.id === active.id)
         dispatch(selectTask(taskCurrent))
         const allowedStatus = spaceColumns.
                                 find(s => s.next === over.id && taskCurrent.status === s.reference && currentUser.role === s.role)
         if (allowedStatus) {
             dispatch(updateStatus(over.id))
-            setData(tasks)
         } else{
             alert("You can't move in this way")
         }
@@ -41,9 +38,9 @@ export const Board = () => {
     return (
         <>
             <Box>
-                <Typography variant="h5">Agile board</Typography>
+                <Typography variant="h5" sx={{color:'text.primary'}}>Agile board</Typography>
             </Box>
-            <input type="text" />
+            {/* <input type="text" /> */}
             <Box sx={{ display: 'flex', gap: '8px' }}>
                 <DndContext onDragEnd={handleChangeColumn}>{spaceColumns.map((val, index) => (
                     <Column key={index} name={val.name} taskCards={tasks.filter(task => task.status === val.reference)} status={val.reference} />

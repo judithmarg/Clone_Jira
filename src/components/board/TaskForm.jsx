@@ -19,7 +19,7 @@ export const TaskForm = ({ nameColumn, showIssue }) => {
   }
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', p: '12px', gap: '12px', backgroundColor: 'secondary.main', borderRadius: '8px', width: '258px', boxSizing: 'border-box' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', p: '12px', gap: '12px', backgroundColor: 'secondary.secondary', color:'text.primary',borderRadius: '8px', width: '258px', boxSizing: 'border-box' }}>
       <input ref={inputRef} type="text" placeholder="Write the new task" className={styles.inputForm} /> 
       <Box sx={{display:'flex'}}>
         <SelectAvatar nameAvatar="userRose" updateAssign={setAssigneFinal} />

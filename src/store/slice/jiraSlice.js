@@ -19,7 +19,9 @@ const jiraSlice = createSlice({
             const { titleA, statusA, assigneA } = action.payload;
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
-            state.tasks.push({ id: crypto.randomUUID(), title: titleA, description: '', assignee: assigneA, type:'✅-TASK', status: statusA, createdAt: dateString })
+            const newTask = { id: crypto.randomUUID(), title: titleA, description: '', assignee: assigneA, type:'✅-TASK', status: statusA, createdAt: dateString };
+            state.tasks.push(newTask);
+            state.selectedTask = newTask;
         },
         selectTask: (state, action) => {
             state.selectedTask = action.payload

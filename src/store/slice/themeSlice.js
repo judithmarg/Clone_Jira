@@ -8,8 +8,8 @@ const themeSlice = createSlice({
     name: "theme",
     initialState,
     reducers: {
-        toggleTheme: (state, action) => {
-            state.colorTheme = action.payload
+        toggleTheme: (state) => {
+            state.colorTheme = state.colorTheme === "light" ? "dark" : "light";
         }
     }
 })

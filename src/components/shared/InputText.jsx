@@ -4,7 +4,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 export const InputText = ({ title, Icon, type, name, value, handleOnChange }) => {
     return (
         <Box>
-            <InputLabel htmlFor={`input-with-${name}`}>
+            <InputLabel htmlFor={`input-with-${name}`} sx={{color:'text.primary'}}>
                 {title}
             </InputLabel>
             <Input
