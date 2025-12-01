@@ -7,11 +7,11 @@ import { useLogin } from '../../hooks/useLogin';
 import { Toaster } from 'react-hot-toast';
 
 export const Login = () => {
-    const  {username, password, handleOnChange,handleSubmit} = useLogin();
+    const { username, password, handleOnChange, handleSubmit, handleBack } = useLogin();
 
     return (
         <Box className={styles.container} sx={{ backgroundColor: 'background.default' }}>
-            <Toaster/>
+            <Toaster />
             <Typography sx={{ fontSize: '24px', color: 'neutral.main' }}>Login</Typography>
             <InputText
                 title='Username'
@@ -29,7 +29,10 @@ export const Login = () => {
                 value={password}
                 handleOnChange={handleOnChange}
             />
-            <Button onClick={handleSubmit} sx={{ backgroundColor: 'neutral.secondary', color: 'neutral.contrast', fontWeight: '600' }}>Login</Button>
+            <Box sx={{display:'flex', gap:'16px'}}>
+                <Button onClick={handleBack} sx={{ color: 'neutral.main', fontWeight: '600' }}>Register</Button>
+                <Button onClick={handleSubmit} sx={{ backgroundColor: 'neutral.secondary', color: 'neutral.contrast', fontWeight: '600' }}>Login</Button>
+            </Box>
         </Box>
     )
 }

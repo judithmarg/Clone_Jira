@@ -36,5 +36,9 @@ export const useLogin = () => {
         }
     }
 
-    return { form, username, password, users, handleOnChange, handleSubmit }
+    const handleBack = () => {
+        navigate("/register")
+    }
+
+    return { form, username, password, users, handleOnChange, handleSubmit, handleBack }
 }

@@ -1,16 +1,61 @@
-# React + Vite
+# Clone jira
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+1.	Implement a functional Kanban board with four workflow stages:
 
-Currently, two official plugins are available:
+o	Backlog
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+o	In Progress
 
-## React Compiler
+o	QA
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+o	Done
 
-## Expanding the ESLint configuration
+2.	Allow users to create new tasks, assign them to a person, and store everything in LocalStorage.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+3.	Implement role-based movement rules:
+
+o	Developer can move tasks:
+
+	Backlog → In Progress
+
+	In Progress → QA
+
+	QA can move tasks:
+
+	QA → Done
+
+	No user can move cards backwards.
+
+4.	Enable drag-and-drop movement using one of these recommended libraries:	@dnd-kit
+
+5.	Keep all data persistent between page reloads using LocalStorage.
+
+
+## Optional Features (Bonus)
+
+•	Task filtering by:
+o	Task name
+o	Assigned user
+
+•	Dark mode toggle.
+
+You can register a new user or login with defined users:
+
+username: userRose , password: 123  (Dev)
+
+username: userMuss , password: 123  (QA)
+
+username: userTram , password: 123   (Dev)
+
+username: userPhd , password: 123   (QA)
+
+## To use
+
+- Clonar repositorio
+  
+- Usar comandos:
+
+```console
+ npm install
+ npm run dev
+```
