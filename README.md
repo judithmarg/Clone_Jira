@@ -62,7 +62,11 @@ username: userPhd , password: 123   (QA)
 
 ## POINTS TO IMPROVE
 
-- Modal yo update description, assignee, etc. It needs an modal weight using jiraSlice.
+- Alert to avoid bad movements, more description. 
+
+- QA users also can update a task to in-progress from QA.
+
+- Modal to update description, assignee, etc. It needs an modal using jiraSlice. (The difference between move with drag and drop and click to open the modal is crucial).
 
 - Add color coding tasks by assigned user or priority.
 
