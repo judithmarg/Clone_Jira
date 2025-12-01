@@ -14,13 +14,13 @@ const initialState = {
 
 const jiraSlice = createSlice({
     name: 'jira',
-    initialState: dataInLocalStorage? JSON.parse(dataInLocalStorage): initialState,
+    initialState: dataInLocalStorage ? JSON.parse(dataInLocalStorage) : initialState,
     reducers: {
         createTask: (state, action) => {
             const { titleA, statusA, assigneA } = action.payload;
             const today = new Date();
             const dateString = today.toISOString().split('T')[0];
-            const newTask = { id: crypto.randomUUID(), title: titleA, description: '', assignee: assigneA, type:'✅-TASK', status: statusA, createdAt: dateString };
+            const newTask = { id: crypto.randomUUID(), title: titleA, description: '', assignee: assigneA, type: '✅-TASK', status: statusA, createdAt: dateString };
             state.tasks.push(newTask);
             state.selectedTask = newTask;
         },
@@ -34,21 +34,25 @@ const jiraSlice = createSlice({
             state.tasks = state.tasks.map(t => state.selectedTask.id === t.id ? { ...t, status: action.payload } : t)
         },
         registerUser: (state, action) => {
-             const {username, password, role} = action.payload
-            state.users.push({id:crypto.randomUUID(), name:username, password:password, role: role, avatar: 'src/assets/five.jpg'})
+            const { username, password, role } = action.payload
+            state.users.push({ id: crypto.randomUUID(), name: username, password: password, role: role, avatar: 'src/assets/five.jpg' })
         },
         loginUser: (state, action) => {
-            const {username, password} = action.payload
+            const { username, password } = action.payload
             state.currentUser = state.users.find(user => user.name === username && user.password === password)
         },
         logoutUser: (state) => {
             state.currentUser = null
         },
         filterBySearch: (state, action) => {
-            state.filteredTasks = state.tasks.filter(task => task.title === action.payload || task.assignee === action.payload )
+            const q = action.payload.toLowerCase();
+            state.filteredTasks = state.tasks.filter(task =>
+                task.title?.toLowerCase().includes(q) ||
+                task.assignee?.toLowerCase().includes(q)
+            )
         }
     }
 })
 
-export const { createTask, editDetails, assignPerson, updateStatus, selectTask, registerUser, loginUser, logoutUser, filterBySearch} = jiraSlice.actions
+export const { createTask, editDetails, assignPerson, updateStatus, selectTask, registerUser, loginUser, logoutUser, filterBySearch } = jiraSlice.actions
 export default jiraSlice.reducer

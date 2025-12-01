@@ -59,3 +59,11 @@ username: userPhd , password: 123   (QA)
  npm install
  npm run dev
 ```
+
+## POINTS TO IMPROVE
+
+- Modal yo update description, assignee, etc. It needs an modal weight using jiraSlice.
+
+- Add color coding tasks by assigned user or priority.
+
+- Search filtering by advanced attributes.
