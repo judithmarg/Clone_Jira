@@ -29,9 +29,9 @@ export const Header = () => {
     }
 
     return (
-        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'lavender' }}>
+        <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1, backgroundColor: 'secondary.secondary' }}>
             <Toolbar sx={{ gap: "16px", color: "#434141ff", display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <Box>
+                <Box sx={{display:'flex', gap:'12px', alignItems:'center'}}>
                     <WindowOutlinedIcon />
                     <img src="src\assets\jira_logo.png" alt="logo Jira" width="70px" />
                 </Box>

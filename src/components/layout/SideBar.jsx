@@ -44,7 +44,7 @@ export const SideBar = () => {
                                         <ListItemIcon>
                                             {val.icon}
                                         </ListItemIcon>
-                                        <ListItemText primary={val.name} />
+                                        <ListItemText primary={val.name} sx={{color:'text.primary'}} />
                                     </ListItemButton>
                                 </ListItem>
                             )}
