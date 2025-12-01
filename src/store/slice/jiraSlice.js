@@ -8,6 +8,7 @@ const initialState = {
     users: usersDefault,
     currentUser: null,
     tasks: tasksHardcoded,
+    filteredTasks: [],
     selectedTask: null,
 }
 
@@ -42,10 +43,12 @@ const jiraSlice = createSlice({
         },
         logoutUser: (state) => {
             state.currentUser = null
+        },
+        filterBySearch: (state, action) => {
+            state.filteredTasks = state.tasks.filter(task => task.title === action.payload || task.assignee === action.payload )
         }
-
     }
 })
 
-export const { createTask, editDetails, assignPerson, updateStatus, selectTask, registerUser, loginUser, logoutUser} = jiraSlice.actions
+export const { createTask, editDetails, assignPerson, updateStatus, selectTask, registerUser, loginUser, logoutUser, filterBySearch} = jiraSlice.actions
 export default jiraSlice.reducer

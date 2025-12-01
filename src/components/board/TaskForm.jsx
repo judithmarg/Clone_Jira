@@ -6,7 +6,7 @@ import { useTaskForm } from '../../hooks/useTaskForm';
 
 export const TaskForm = ({ nameColumn, showIssue }) => {
   
-  const {inputRef, submitInfo, setAssigneFinal} = useTaskForm(nameColumn, showIssue)
+  const {inputRef, submitInfo, setAssigneFinal} = useTaskForm({nameColumn, showIssue})
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', p: '12px', gap: '12px', backgroundColor: 'secondary.secondary', color:'text.primary',borderRadius: '8px', width: '258px', boxSizing: 'border-box' }}>

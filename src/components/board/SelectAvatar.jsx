@@ -1,24 +1,15 @@
 import { Avatar, FormControl, ListItemText, MenuItem, Select, Tooltip } from '@mui/material'
-import { useState } from 'react';
-import { useSelector } from 'react-redux'
+import { useSelectAvatar } from '../../hooks/useSelectAvatar'
 
 export const SelectAvatar = ({ nameAvatar, updateAssign, read = false }) => {
-    const users = useSelector((state) => state.jira.users);
-    const user = users.find(u => u.name === nameAvatar);
-    const [asigneeUser, setAsigneeUser] = useState(user);
 
+    const { users, asigneeUser, handleOnChange} = useSelectAvatar({nameAvatar, updateAssign})
     if (read) {
         return (
             <Tooltip title={asigneeUser?.name}>
             <Avatar sx={{ width: 24, height: 24 }} src={asigneeUser?.avatar} />
             </Tooltip>
         )
-    }
-
-    const handleOnChange = (e) => {
-        const newAvatar = e.target.value;
-        updateAssign(newAvatar)
-        setAsigneeUser(newAvatar)
     }
 
     return (

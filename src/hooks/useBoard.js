@@ -1,7 +1,10 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { selectTask, updateStatus } from '../store/slice/jiraSlice';
+import { filterBySearch, selectTask, updateStatus } from '../store/slice/jiraSlice';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
+import { useDebounce } from './useDebounce';
+import { useEffect } from 'react';
 
 
 const spaceColumns = [
@@ -12,9 +15,12 @@ const spaceColumns = [
 ];
 
 export const useBoard = () => {
-      const tasks = useSelector(state => state.jira.tasks);
+    const tasks = useSelector(state => state.jira.tasks);
     const currentUser = useSelector(state => state.jira.currentUser);
     const dispatch = useDispatch();
+    const [search, setSearch] = useState("");
+    const debounceValueA = useDebounce(search, 1000);
+    const filteredTasks = useSelector(state => state.jira.filteredTasks);
 
     const handleChangeColumn = (event) => {
         const { active, over } = event;
@@ -32,5 +38,20 @@ export const useBoard = () => {
 
     }
 
-    return {spaceColumns, tasks, handleChangeColumn }
+    const handleChangeSearch = ({target}) => {
+        setSearch(target.value)
+    }
+
+    useEffect(() => {
+        const fetchingWithDebounce = async() => {
+            try {
+                dispatch(filterBySearch(debounceValueA))
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        fetchingWithDebounce();
+    }, [debounceValueA])
+
+    return {spaceColumns, tasks, handleChangeColumn, filteredTasks, search, handleChangeSearch }
 }
