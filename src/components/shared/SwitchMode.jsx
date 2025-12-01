@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Switch } from '@mui/material';
-import React from 'react'
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { toggleTheme } from '../../store/slice/themeSlice';

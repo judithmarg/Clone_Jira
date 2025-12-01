@@ -1,38 +1,13 @@
-import { useState } from 'react';
 import { Box, Button, ButtonGroup, Input, InputAdornment, InputLabel, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import styles from './Register.module.css';
 import { InputText } from '../shared/InputText';
 import KeyOutlinedIcon from '@mui/icons-material/KeyOutlined';
-import { useDispatch } from 'react-redux';
-import { registerUser } from '../../store/slice/jiraSlice';
-import { useNavigate } from 'react-router';
+import { useRegister } from '../../hooks/useRegister';
 
-const inputForm = {
-    username: "",
-    password: "",
-    role: "Developer"
-}
 export const Register = () => {
-    const [form, setForm] = useState(inputForm);
-    const { username, password, role } = form;
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const handleOnChange = ({ target }) => {
-        const { name, value } = target;
-        setForm(prev => ({
-            ...prev,
-            [name]: value
-        }))
-    }
-
-    const handleSubmit = () => {
-        if(username === null && password === null && role==="") return;
-        dispatch(registerUser(form))
-        navigate('/login')
-    }
-
+    const  { username, password, role, handleOnChange, handleSubmit} = useRegister();
+    
     return (
         <Box className={styles.container} sx={{ backgroundColor: 'background.default' }}>
             <Typography sx={{ fontSize: '24px', color: 'neutral.main' }}>Register</Typography>
